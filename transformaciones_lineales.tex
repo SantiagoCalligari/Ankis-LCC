@@ -1,0 +1,230 @@
+\documentclass[a4paper]{article}
+
+% PACKAGES
+\usepackage[
+    a4paper,
+    margin=5mm % Small margin around the page (adjust if needed)
+]{geometry} % Package to control page layout and margins
+\usepackage{tikz} % Powerful drawing package, used here for the grid
+\usetikzlibrary{calc} % To perform calculations within tikz
+\usepackage{lipsum} % Package to generate placeholder text (Lorem Ipsum) - Keep for example
+\usepackage{amsfonts} % Or \usepackage{amssymb}
+
+% SETTINGS
+\pagestyle{empty} % Remove page numbers
+\setlength{\parindent}{0pt} % Remove paragraph indentation
+
+\begin{document}
+
+% --- PAGE 1 ---
+\begin{tikzpicture}[remember picture, overlay]
+    % Define the usable area corners
+    \coordinate (TopLeft) at ($(current page.north west) + (5mm,-5mm)$);
+    \coordinate (BottomRight) at ($(current page.south east) + (-5mm,5mm)$);
+
+    % Calculate the dimensions of each mini-page
+    \pgfmathsetmacro{\MiniPageW}{\textwidth/2}
+    \pgfmathsetmacro{\MiniPageH}{\textheight/4}
+    \pgfmathsetmacro{\TextW}{\MiniPageW - 4mm} % Text width slightly smaller than cell
+
+    % --- Define Node Style ---
+    \tikzstyle{minipagestyle} = [
+        draw=gray, thin,
+        anchor=north west,
+        minimum width=\MiniPageW pt,
+        minimum height=\MiniPageH pt,
+        text width=\TextW pt,
+        inner sep=2mm % Padding inside the cell
+    ]
+
+    % --- Draw the 8 Mini-Pages for Page 1 ---
+
+    % Row 1
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C1 (Top-Left)
+        \vspace*{\fill} % Optional: centers text vertically
+          Transformaciones Lineales
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C2 (Top-Right)
+        \vspace*{\fill}
+          Caracteristica de Transformaciones Lineales
+        \vspace*{\fill}
+    };
+
+    % Row 2
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C1
+        \vspace*{\fill}
+          Nucleo e Imagen de Transformaciones Lineales
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C2
+        \vspace*{\fill}
+          Espacio $L(V,W)$
+        \vspace*{\fill}
+    };
+
+    % Row 3
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C1
+        \vspace*{\fill}
+          Operadores Lineales
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C2
+        \vspace*{\fill}
+        Title Placeholder 6
+        \vspace*{\fill}
+    };
+
+    % Row 4
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C1 (Bottom-Left)
+        \vspace*{\fill}
+        Title Placeholder 7
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C2 (Bottom-Right)
+        \vspace*{\fill}
+        Title Placeholder 8
+        \vspace*{\fill}
+    };
+
+\end{tikzpicture}
+
+\newpage % Start the second page
+
+% --- PAGE 2 ---
+\begin{tikzpicture}[remember picture, overlay]
+    % Define the usable area corners (same as page 1)
+    \coordinate (TopLeft) at ($(current page.north west) + (5mm,-5mm)$);
+    \coordinate (BottomRight) at ($(current page.south east) + (-5mm,5mm)$);
+
+    % Calculate the dimensions of each mini-page (same as page 1)
+    \pgfmathsetmacro{\MiniPageW}{\textwidth/2}
+    \pgfmathsetmacro{\MiniPageH}{\textheight/4}
+    \pgfmathsetmacro{\TextW}{\MiniPageW - 4mm} % Text width slightly smaller than cell
+
+    % --- Use the same Node Style ---
+    \tikzstyle{minipagestyle} = [
+        draw=gray, thin,
+        anchor=north west,
+        minimum width=\MiniPageW pt,
+        minimum height=\MiniPageH pt,
+        text width=\TextW pt,
+        inner sep=2mm % Padding inside the cell
+    ]
+
+    % --- Draw the 8 Mini-Pages for Page 2 ---
+
+    % Row 1
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C1 (Top-Left)
+      Dado $T: V\rightarrow W$ Transformacion Lineal T es:
+      \vspace{10mm}
+      \begin{itemize}
+        \footnotesize
+        \item Un monomorfismo si T es inyectiva. [ $x \neq y \Rightarrow f(x) \neq f(y)$ ]
+        \item Un epimorfismo si T es sobreyectiva. [ $\forall y, \exists x$ / $f(x) = y$ ]
+        \item Un isomorfismo si T es biyectiva. [ inyectiva y sobreyectiva ]
+        \item Un endomorfismo si T es $V = W$.
+        \item Un automorfismo si T es $V = W$ y T es biyectiva.
+        \item T es automorfismo $\Leftrightarrow$ T es isomorfismo y endomorfismo
+      \end{itemize}
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C2 (Top-Right)
+      (V, +, ·) y (W, +, ·) $\mathbb{F}$-ev, $T: V \rightarrow W$ T.L. si:
+      \begin{itemize}
+        \footnotesize
+        \item $T(u + v) = T(u) + T(v)$
+        \item $T(\alpha u) = \alpha T(u)$
+        \item El cuerpo de los dos espacios es el MISMO
+        \item T T.L. $\Rightarrow T(\bar{0}_V) = \bar{0}_W.$
+      \item T T.L. $\Leftrightarrow \forall \alpha, \beta \in \mathbb{F}, \forall u,v \in V, T(\alpha \cdot u + \beta \cdot v )$
+      \item T T.L. $\Rightarrow T(\sum_{i=1}^n \alpha_i \cdot u_i) = \sum_{i=1}^n \alpha_i T(u_i)$
+      \item $A \in F^{mxn}, T_A: F^n \rightarrow F^m / T_A(x) = Ax$ T.L.
+      \item Si $S \subset V$ sev $\Rightarrow T(S) \subset W$ sev.
+      \item Si $R \subset W$ sev $\Rightarrow T^-1(R) \subset V$ sev.
+      \item $B = {v_1,.., v_n}$ base y $w_1,..,w_n \in W \Rightarrow \exists! T / T(v_i) = w_i, i = 1,..,n$
+      \end{itemize}
+
+    };
+
+    % Row 2
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C1
+      V,W F-ev, $T,S$:$ V\rightarrow W$ T.L. $\lambda \in F \Rightarrow$
+      \begin{itemize}
+        \item $(T+S)(v) = T(v) + S(v)$ T.L.
+        \item $(\lambda T)(v) = \lambda T(v)$ T.L.
+        \item $L(V,W) = \{T:V\rightarrow W / T$ es una T.L.\}
+        \item ((L(V,W), +, ·) es un F Espacio Vectorial.
+        \item $dimV = n$, $dimW = m \Rightarrow dim(L(V,W)) = m\cdot n$
+      \item $T\in L(U,V), S \in L(V,W) \Rightarrow S$\textopenbullet$T \in L(U,W)$
+
+
+      \end{itemize}
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C2
+      $T:V\rightarrow W$ T.L.
+      \begin{itemize}
+        \scriptsize
+        \item $ker(T)=T^{-1}(\bar{0})=\{v\in V:T(v) = \bar{0}\}$ subeespacio de V.
+        \item T monomorfismo $\Leftrightarrow ker(T) = \{\bar{0}\}$.
+        \item $Im(T) = T(V) = \{ T(v) \in W: v \in V\} $ subespacio de W.
+        \item T epimorfismo $\Leftrightarrow Im(T) = W$
+        \item Nulidad de T es\hspace{.5mm}la\hspace{.5mm}dimension\hspace{.5mm}de su nucleo.\hspace{1mm}$nul(T) = dim(ker(T)) $.
+        \item Rango de T\hspace{.6mm}es\hspace{.6mm}la\hspace{.6mm}dimension\hspace{.6mm}de su imagen.\hspace{1mm}$ran(T) = dim(Im(T))$.
+        \item T monomorfismo $\Leftrightarrow nul(T) = 0$. Epimorfimo $\Leftrightarrow ran(T) = dim(W)$.
+        \item T. De la dimension: si V finito dim. $ran(T) + nul(T) = dim(V)$
+        \item Si V finito dim. y $dim(V) > dim(W) \Rightarrow T$ no monomorfismo. 
+        \item Si V finito dim. y $dim(V) < dim(W) \Rightarrow T$ no epimorfismo. 
+
+      \end{itemize}
+    };
+
+    % Row 3
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C1
+        Section 5: \lipsum[4]
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C2
+      Cuando V = W, se escribe L(V). $T, S, R, L \in L(V), \lambda \in F$
+      \begin{itemize}
+        \scriptsize
+        \item Si $S,T \in L(V) \Rightarrow S$\textopenbullet$T \in L(V)$. $ST := S$\textopenbullet$T$. 
+        \item $T(SR) = (TS)R$.
+        \item $id_VT = Tid_V = T$
+        \item $T(S+R) = TS + TR$ y $ (S + R)T = ST + SR$.
+        \item $\lambda(TS) = (\lambda T)S = T(\lambda S)$
+        \item T es invertible $\Leftrightarrow \exists S: W\rightarrow V / TS = id_W$ y $ST = id_V$.
+        \item Si existe inversa es unica. T invertible $\Leftrightarrow$ biyectiva.
+        \item Si $T \in L(V,W)$ invertible $\Rightarrow  T^{-1} \in L(W,V)$ 
+        \item si $T\in L(U,V), S\in L(V,W)$ invertibles $\Rightarrow ST\in L(U,W)$ invertibles
+          y $(ST)^{-1} = T^{-1}S^{-1} \in L(W,U)$
+
+        \end{itemize}
+    };
+
+    % Row 4
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C1 (Bottom-Left)
+        Section 7: \lipsum[6]
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C2 (Bottom-Right)
+        Section 8: \lipsum[7]
+    };
+
+\end{tikzpicture}
+
+\end{document}
+
