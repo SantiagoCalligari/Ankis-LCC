@@ -1,0 +1,250 @@
+\documentclass[a4paper]{article}
+
+% PACKAGES
+\usepackage[
+    a4paper,
+    margin=5mm % Small margin around the page (adjust if needed)
+]{geometry} % Package to control page layout and margins
+\usepackage{tikz} % Powerful drawing package, used here for the grid
+\usetikzlibrary{calc} % To perform calculations within tikz
+\usepackage{lipsum} % Package to generate placeholder text (Lorem Ipsum) - Keep for example
+
+\usepackage{amsfonts} % Or \usepackage{amssymb}
+
+% SETTINGS
+\pagestyle{empty} % Remove page numbers
+\setlength{\parindent}{0pt} % Remove paragraph indentation
+
+\begin{document}
+
+% --- PAGE 1 ---
+\begin{tikzpicture}[remember picture, overlay]
+    % Define the usable area corners
+    \coordinate (TopLeft) at ($(current page.north west) + (5mm,-5mm)$);
+    \coordinate (BottomRight) at ($(current page.south east) + (-5mm,5mm)$);
+
+    % Calculate the dimensions of each mini-page
+    \pgfmathsetmacro{\MiniPageW}{\textwidth/2}
+    \pgfmathsetmacro{\MiniPageH}{\textheight/4}
+    \pgfmathsetmacro{\TextW}{\MiniPageW - 4mm} % Text width slightly smaller than cell
+
+    % --- Define Node Style ---
+    \tikzstyle{minipagestyle} = [
+        draw=gray, thin,
+        anchor=north west,
+        minimum width=\MiniPageW pt,
+        minimum height=\MiniPageH pt,
+        text width=\TextW pt,
+        inner sep=2mm % Padding inside the cell
+    ]
+
+    % --- Draw the 8 Mini-Pages for Page 1 ---
+
+    % Row 1
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C1 (Top-Left)
+        \vspace*{\fill} % Optional: centers text vertically
+            \Large{Axiomas De Cuerpo}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C2 (Top-Right)
+        \vspace*{\fill}
+          \Large{ Axiomas de Espacio Vectorial}
+        \vspace*{\fill}
+    };
+
+    % Row 2
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C1
+        \vspace*{\fill}
+          \Large{ Proposiciones de $\mathbb{F}$-ev (V,+,·)}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C2
+        \vspace*{\fill}
+          Caracterización Sub-Espacios Vectoriales
+        \vspace*{\fill}
+    };
+
+    % Row 3
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C1
+        \vspace*{\fill}
+          \Large{ Suma de Sub-Espacios Vectoriales}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C2
+        \vspace*{\fill}
+          Combinacion Lineal
+        \vspace*{\fill}
+    };
+
+    % Row 4
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C1 (Bottom-Left)
+        \vspace*{\fill}
+          Bases Y Dimension
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C2 (Bottom-Right)
+        \vspace*{\fill}
+        Independencia Lineal
+          \vspace*{\fill}
+    };
+
+\end{tikzpicture}
+
+\newpage % Start the second page
+
+% --- PAGE 2 ---
+\begin{tikzpicture}[remember picture, overlay]
+    % Define the usable area corners (same as page 1)
+    \coordinate (TopLeft) at ($(current page.north west) + (5mm,-5mm)$);
+    \coordinate (BottomRight) at ($(current page.south east) + (-5mm,5mm)$);
+
+    % Calculate the dimensions of each mini-page (same as page 1)
+    \pgfmathsetmacro{\MiniPageW}{\textwidth/2}
+    \pgfmathsetmacro{\MiniPageH}{\textheight/4}
+    \pgfmathsetmacro{\TextW}{\MiniPageW - 4mm} % Text width slightly smaller than cell
+
+    % --- Use the same Node Style ---
+    \tikzstyle{minipagestyle} = [
+        draw=gray, thin,
+        anchor=north west,
+        minimum width=\MiniPageW pt,
+        minimum height=\MiniPageH pt,
+        text width=\TextW pt,
+        inner sep=2mm % Padding inside the cell
+    ]
+
+    % --- Draw the 8 Mini-Pages for Page 2 ---
+
+    % Row 1
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C1 (Top-Left)
+      Dado $\mathbb{F}$, $(V, +, \cdot)$ es $\mathbb{F}$-espacio Vectorial si se verifica:
+      \begin{itemize}
+      \item  si $ v, w \in V \Rightarrow v + w \in V$
+        \vspace{-1mm}
+      \item  si $ v, w,u \in V \Rightarrow v + (w + u) = (v+w)+u$
+        \vspace{-1mm}
+      \item  $ \exists \bar{0} \in V / v + \bar{0} = \bar{0} + u = u$
+        \vspace{-1mm}
+      \item  $ \forall w \in V \exists v \in V / v + w = w + u = \bar{0}$
+        \vspace{-1mm}
+      \item  si $ v, w \in V \Rightarrow v + w = w + v$
+        \vspace{-1mm}
+      \item  si $ \alpha \in \mathbb{F}$ y $w \in V \Rightarrow \alpha \cdot w \in V$
+        \vspace{-1mm}
+      \item  si $ \alpha, \beta \in \mathbb{F}$ y $w \in V \Rightarrow \alpha \cdot (\beta \cdot w) = (\alpha \cdot \beta) \cdot w$
+        \vspace{-1mm}
+      \item  si $ \alpha, \beta \in \mathbb{F}$ y $w \in V \Rightarrow (\alpha + \beta) \cdot w = (\alpha \cdot w) + (\beta \cdot w)$
+        \vspace{-1mm}
+      \item  si $ \alpha \in \mathbb{F}$ y $w, v \in V \Rightarrow \alpha \cdot (w + v) = (\alpha \cdot w) + (\alpha \cdot v)$
+        \vspace{-1mm}
+      \item  si $v \in V \Rightarrow 1 \cdot v = v$
+        \vspace{-1mm}
+      \end{itemize}
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C2 (Top-Right)
+        \begin{itemize}
+          \item  $ \forall a, b, c \in \mathbb{F}, a  + (b + c) = (a + b) + c$
+          \item  $ \exists 0 \in \mathbb{F}/  a + 0 = 0 + a = a$
+          \item  $ \forall a \in \mathbb{F} \exists b \in \mathbb{F}/  a + b = b + a = 0$
+          \item  $ \forall a,b \in \mathbb{F},  a + b = b + a$
+          \item  $ \forall a, b, c \in \mathbb{F}, a \cdot (b \cdot c) = (a \cdot b) \cdot c$
+          \item  $ \exists 1 \in \mathbb{F}/  a\cdot1 = 1 \cdot a = a$
+          \item  $ \forall a \in \mathbb{F} - \{0\} \exists b \in \mathbb{F} / a \cdot b = b \cdot a = 1$
+          \item  $ \forall a,b \in \mathbb{F},  a \cdot b = b \cdot a$
+          \item  $ \forall a,b,c \in \mathbb{F},  a \cdot (b + c) = (a \cdot b) + ( a \cdot c)$
+        \end{itemize}
+    };
+
+    % Row 2
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C1
+      $U \subset V$ subespacio vectorial $\Leftrightarrow$ se cumple:
+      \begin{itemize}
+      \item $\forall u, v \in U, u + v \in U$
+      \item $\forall \alpha \in \mathbb{F}, v \in U, \alpha \cdot v \in U$
+      \end{itemize}
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C2
+      \begin{itemize}
+        \item $\exists! 0$
+        \item $\forall v \in V, \exists!$ un unico opuesto, notado $-v$
+        \item $\forall v \in V, v \cdot 0 = \bar{0}$
+        \item $\forall \alpha \in \mathbb{F}, \alpha \cdot \bar{0} = \bar{0}$
+        \item $\forall v \in V, v \cdot (-1) = -v$
+        \item dados $ v \in V, \alpha \in \mathbb{F}$ si $ v \cdot \alpha = \bar{0}$ entonces $v = \bar{0}$ o $\alpha = 0$
+      \end{itemize}
+    };
+
+    % Row 3
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C1
+      V es $\mathbb{F}$-ev, $v_1,...,v_n \in V$ \\
+      
+      \begin{itemize}
+        \item Una C.L. es un vector de forma: $\alpha_1 v_1 + ... + \alpha_n + v_n$
+        \subitem \tiny{ Las C.L. de un ev tienen finitos terminos}\small
+      \item $span(S) = \{ \sum \alpha_i v_i: v_i \in S, \alpha_i \in \mathbb{F}\}$, todas las C.L.
+      \item si $S \subset V \Rightarrow span(S) = \cap\{U \subset V: U$ sev y $S \subset U\} $ 
+      \item Si $span(S) = V \Rightarrow $ S genera V.
+      \item Si $S$ es finito, V es finitamente Generado.
+    \end{itemize}
+
+      \vspace*{\fill}
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C2
+      $S$ = $U_1 + ...+ U_n$ = $\{ u_1 + ... + u_n \in V: u_i \in U_i \forall i = 1,...,n \}$\\
+      \color{white}.\color{black}\\
+      $\forall u$ $\exists!u_i \in U_i$ $/$ $u = \sum u_i \Rightarrow S = U_1 \oplus ... \oplus U_n$ suma directa\\
+      \color{white}.\color{black}\\
+      $U, W \subset V$ sev, $S = U+W$, $S = U \oplus W \Leftrightarrow U \bigcap W = \{\bar{0}\}$\\
+      \color{white}.\color{black}\\
+      $U_1, ..., U_n \subset V$ sev y $S = U_1 + ... + U_n$, S suma directa $\Leftrightarrow \bar{0}$ es la suma de triviales de $U_1, ..., U_n$.
+ 
+      
+      
+    };
+
+    % Row 4
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C1 (Bottom-Left)
+      Sea V $\mathbb{F}$-ev y $S \subset V$
+      \begin{itemize}
+        \item Si S finito, S L.I. si $\sum_{i=1}^n \alpha_i v_i = \bar{0} \Rightarrow \alpha_i = 0 \forall \alpha_i$
+        \item Si $S = \emptyset \Rightarrow S$ es L.I.
+        \item Si S es infinito, es L.I: si $\forall Z \subset S$ finito es L.I.
+        \item Si S no L.I. S es linealmente dependiente.
+          \item $\bar{0} \in S \Rightarrow S$ L.D.
+        \item S L.D. entonces $T \supset S$ L.D.
+        \item S L.I. entonces $T \subset S$ L.I.
+          \item $v \in V, {v}$ L.D. $\Leftrightarrow v = \bar{0}$
+          
+      \end{itemize}
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C2 (Bottom-Right)
+      \begin{itemize}
+        \item una base de V es un conjunto generador L.I.
+        \item Si V generado por S, $|S| = n$, $\Rightarrow$ T vectores L.I. de V finito y $|T| = m$, donde $m < n$.
+        \item Si V $\mathbb{F}$-ev finito dimensional $\Rightarrow \forall B$, base $|B| = n$
+        \item la dimension de V sobre $\mathbb{F}$ es la cantidad de elementos de sus bases. dim$_F(\bar{0}) = 0$
+      \item Si dim$_F(V) = n$, $S \subset U$ y $|S| > n \Rightarrow $ L.D. Si $|S| < n$, No genera
+      \item B base de V $\Leftrightarrow \forall v \in V \exists! \alpha_1,...,\alpha_n \in \mathbb{F} / v = \sum_{i = 1}^n \alpha_i v_i$
+      \item Todo conjunto generador se reduce a base, todo li se extiende a base.
+      \end{itemize}
+    };
+
+\end{tikzpicture}
+
+\end{document}
