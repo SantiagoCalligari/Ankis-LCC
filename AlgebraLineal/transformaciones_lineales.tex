@@ -9,6 +9,7 @@
 \usetikzlibrary{calc} % To perform calculations within tikz
 \usepackage{lipsum} % Package to generate placeholder text (Lorem Ipsum) - Keep for example
 \usepackage{amsfonts} % Or \usepackage{amssymb}
+\usepackage{amsmath}
 
 % SETTINGS
 \pagestyle{empty} % Remove page numbers
@@ -43,13 +44,13 @@
     \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -0*\MiniPageH pt)$)
     { % Content for R1, C1 (Top-Left)
         \vspace*{\fill} % Optional: centers text vertically
-          Transformaciones Lineales
+          \huge Transformaciones Lineales
         \vspace*{\fill}
     };
     \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -0*\MiniPageH pt)$)
     { % Content for R1, C2 (Top-Right)
         \vspace*{\fill}
-          Caracteristica de Transformaciones Lineales
+          \huge Caracteristica de \\Transformaciones Lineales
         \vspace*{\fill}
     };
 
@@ -57,13 +58,13 @@
     \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -1*\MiniPageH pt)$)
     { % Content for R2, C1
         \vspace*{\fill}
-          Nucleo e Imagen de Transformaciones Lineales
+          \huge Nucleo e Imagen
         \vspace*{\fill}
     };
     \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -1*\MiniPageH pt)$)
     { % Content for R2, C2
         \vspace*{\fill}
-          Espacio $L(V,W)$
+          \huge Espacio $L(V,W)$
         \vspace*{\fill}
     };
 
@@ -71,13 +72,13 @@
     \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -2*\MiniPageH pt)$)
     { % Content for R3, C1
         \vspace*{\fill}
-          Operadores Lineales
+        \huge Operadores Lineales
         \vspace*{\fill}
     };
     \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -2*\MiniPageH pt)$)
     { % Content for R3, C2
         \vspace*{\fill}
-        Title Placeholder 6
+          \Huge Coordenadas y Cambio de Base
         \vspace*{\fill}
     };
 
@@ -85,13 +86,13 @@
     \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -3*\MiniPageH pt)$)
     { % Content for R4, C1 (Bottom-Left)
         \vspace*{\fill}
-        Title Placeholder 7
+          \Huge Definicion Cambio de Base
         \vspace*{\fill}
     };
     \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -3*\MiniPageH pt)$)
     { % Content for R4, C2 (Bottom-Right)
         \vspace*{\fill}
-        Title Placeholder 8
+          \Huge Matriz de una \\ Transformacion Lineal
         \vspace*{\fill}
     };
 
@@ -193,7 +194,30 @@
     % Row 3
     \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -2*\MiniPageH pt)$)
     { % Content for R3, C1
-        Section 5: \lipsum[4]
+      $DimV = n$, una base ordenada es un subconjunto $B = \{v_1,...,v_n\}, v \in V: v = \alpha_1 v_1 + ... + \alpha_n v_n$. El vector $(\alpha_1,...,\alpha_n) \in F$ es el vector de coordenadas v, $[v]_{B}$
+      \footnotesize
+      \begin{itemize}
+        \item V,W F-ev isomorfos si $\exists T:V\rightarrow W$ isomorfo, $V \stackrel{T}{\simeq} W$
+          \vspace{-0.5mm}
+        \item En la clase de los F-ev, el isomorfismo es relacion de equivalencia. [Reflexiva, Transitiva, Simetrica]
+          \vspace{-0.5mm}
+        \item V F-ev con $dimV=n \Rightarrow V \simeq F^n$ 
+          \vspace{-0.5mm}
+        \item $B_1 = \{v_1, ...,v_n\}, B_2=\{w_1,...,w_n\}$, $C = (C_{ij})$/\\$ \forall j < n, c_{1j},...c_{nj} \in F$ /   $v_j = c_{1j}w_1 + ... + c_{nj}w_n$
+          \vspace{-0.5mm}
+          $C[v]_{B_1}^t = [v]_{B_2}^t$ Cambio de base de $B_1$ a $B_2$
+          \vspace{-0.5mm}
+        \item $C_{B_1\rightarrow B_3} = C_{B_2 \rightarrow B_3}C_{B_1\rightarrow B_2}$
+          \vspace{-0.5mm}
+        \item $C_{B_1\rightarrow B_2} = C_{B_2 \rightarrow B_1}^{-1}$
+          \vspace{-0.5mm}
+        \item Si $A\in F^{nxn}$ invertible $\exists B_1, B_2 de F^n / A = C_{B_1B_2}$
+          \vspace{-0.5mm}
+        \item Si $A\in F^{nxn}$ invertible Y $B$ base de $F^n \Rightarrow$
+          \vspace{-0.5mm}
+          \subitem $\exists B_1$ base de $F^n / A = C_{B_1B}$
+          \subitem $\exists B_2$ base de $F^n / A = C_{BB_2}$
+        \end{itemize}
     };
     \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -2*\MiniPageH pt)$)
     { % Content for R3, C2
@@ -210,18 +234,32 @@
         \item Si $T \in L(V,W)$ invertible $\Rightarrow  T^{-1} \in L(W,V)$ 
         \item si $T\in L(U,V), S\in L(V,W)$ invertibles $\Rightarrow ST\in L(U,W)$ invertibles
           y $(ST)^{-1} = T^{-1}S^{-1} \in L(W,U)$
-
         \end{itemize}
     };
 
     % Row 4
     \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -3*\MiniPageH pt)$)
     { % Content for R4, C1 (Bottom-Left)
-        Section 7: \lipsum[6]
     };
     \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -3*\MiniPageH pt)$)
     { % Content for R4, C2 (Bottom-Right)
-        Section 8: \lipsum[7]
+      Dado $B_1=\{e1,e_2,e_3\}$ y $B_2=\{(1,1,1),(1,1,0),(1,0,0)\}$ se consigue la matriz cambio de base $C_{B_1 B_2}$ expresando cada vector de $B_1$ en la base $B_2$.
+      $$
+      C_{B_1 B_2} = ([e_1]_{B_2}^t, [e_1]_{B_2}^t, [e_1]_{B_2}^t) =
+      \begin{pmatrix} 
+        0 & 0 & 1 \\ 
+        0 & 1 & -1 \\ 
+        1 & -1 & 0 \\
+      \end{pmatrix}
+      $$
+      \\
+      La matriz de T respecto a las bases $B_1, B_2$ está dada por:
+    $$
+      [T]_{B_1 B_2} = ( [T(v_1)]_{B_2} ... [T(v_n)]_{B_2} )
+    $$
+      \begin{itemize}
+        \item $[T]_{B_2 B_2}[v]_{B_1}^t = [T(v)]_{B_2}^t$
+      \end{itemize}
     };
 
 \end{tikzpicture}
