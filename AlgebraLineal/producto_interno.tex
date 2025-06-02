@@ -1,0 +1,236 @@
+\documentclass[a4paper]{article}
+
+% PACKAGES
+\usepackage[
+    a4paper,
+    margin=5mm % Small margin around the page (adjust if needed)
+]{geometry} % Package to control page layout and margins
+\usepackage{tikz} % Powerful drawing package, used here for the grid
+\usetikzlibrary{calc} % To perform calculations within tikz
+\usepackage{lipsum} % Package to generate placeholder text (Lorem Ipsum) - Keep for example
+
+\usepackage{amsfonts} % Or \usepackage{amssymb}
+
+% SETTINGS
+\pagestyle{empty} % Remove page numbers
+\setlength{\parindent}{0pt} % Remove paragraph indentation
+
+\begin{document}
+
+% --- PAGE 1 ---
+\begin{tikzpicture}[remember picture, overlay]
+    % Define the usable area corners
+    \coordinate (TopLeft) at ($(current page.north west) + (5mm,-5mm)$);
+    \coordinate (BottomRight) at ($(current page.south east) + (-5mm,5mm)$);
+
+    % Calculate the dimensions of each mini-page
+    \pgfmathsetmacro{\MiniPageW}{\textwidth/2}
+    \pgfmathsetmacro{\MiniPageH}{\textheight/4}
+    \pgfmathsetmacro{\TextW}{\MiniPageW - 4mm} % Text width slightly smaller than cell
+
+    % --- Define Node Style ---
+    \tikzstyle{minipagestyle} = [
+        draw=gray, thin,
+        anchor=north west,
+        minimum width=\MiniPageW pt,
+        minimum height=\MiniPageH pt,
+        text width=\TextW pt,
+        inner sep=2mm % Padding inside the cell
+    ]
+
+    % --- Draw the 8 Mini-Pages for Page 1 ---
+
+    % Row 1
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C1 (Top-Left)
+        \vspace*{\fill} % Optional: centers text vertically
+            \Large{Espacios Fundamentales de Matrices}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C2 (Top-Right)
+        \vspace*{\fill}
+          \Large{Factorización LU}
+        \vspace*{\fill}
+    };
+
+    % Row 2
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C1
+        \vspace*{\fill}
+          \Large{Norma Y Ángulo}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C2
+        \vspace*{\fill}
+          \Large{ Espacios con Producto Interno}
+        \vspace*{\fill}
+    };
+
+    % Row 3
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C1
+        \vspace*{\fill}
+          \Large{ Matriz Asociada a Producto Interno
+          \\Y Ortogonalidad}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C2
+        \vspace*{\fill}
+          \Large{Distancia}
+        \vspace*{\fill}
+    };
+
+    % Row 4
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C1 (Bottom-Left)
+        \vspace*{\fill}
+          \Large{Proceso de ortonormalización de Gram-Schmidt}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C2 (Bottom-Right)
+        \vspace*{\fill}
+          \Large{ Formas Bilineales }
+          \vspace*{\fill}
+    };
+
+\end{tikzpicture}
+
+\newpage % Start the second page
+
+% --- PAGE 2 ---
+\begin{tikzpicture}[remember picture, overlay]
+    % Define the usable area corners (same as page 1)
+    \coordinate (TopLeft) at ($(current page.north west) + (5mm,-5mm)$);
+    \coordinate (BottomRight) at ($(current page.south east) + (-5mm,5mm)$);
+
+    % Calculate the dimensions of each mini-page (same as page 1)
+    \pgfmathsetmacro{\MiniPageW}{\textwidth/2}
+    \pgfmathsetmacro{\MiniPageH}{\textheight/4}
+    \pgfmathsetmacro{\TextW}{\MiniPageW - 4mm} % Text width slightly smaller than cell
+
+    % --- Use the same Node Style ---
+    \tikzstyle{minipagestyle} = [
+        draw=gray, thin,
+        anchor=north west,
+        minimum width=\MiniPageW pt,
+        minimum height=\MiniPageH pt,
+        text width=\TextW pt,
+        inner sep=2mm % Padding inside the cell
+    ]
+
+    % --- Draw the 8 Mini-Pages for Page 2 ---
+
+    % Row 1
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { 
+      $ A \in F^{n * n}$ si solo se usa eliminacion para conseguir
+      $$ U = E_1...E_kA $$
+      Diagonal Superior, entonces: $$L = (E_1...E_k)^{-1} = (E_1^{-1}...E_k^{-1})$$
+      Diagonal Inferior, con $$A = LU$$
+    Y resolvemos $A\overline x = b$ con $L\overline y = b$ y después $U\overline x = \overline y$
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { 
+      \begin{itemize}
+        \item E. Columna de A: $Col(A) := span\{col_1(A), ..., col_n(A)\}$
+        \item E. Nulo de A: $ N(A) := \{\overline x \in \mathbb{F}: A\overline x = \overline0 \} $
+        \item E. Fila de A: $Col(A^t) := span\{col_1(A^t), ..., col_n(A^t)\}$
+        \item E. Nulo a Izquierda de A: $ N(A^t) := \{\overline x \in \mathbb{F}: A^t\overline x = \overline0 \} $
+      \end{itemize}
+    };
+
+    % Row 2
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { 
+      Con $\mathbb{F} = \mathbb{R}$ o $\mathbb{C}$ y $V \mathbb{F}-ev$, Producto Interno es una función que cumple:
+      \begin{itemize}
+      \item $\langle u +v, w\rangle = \langle u, w \rangle + \langle v, w \rangle$
+      \item $\langle \alpha u, w\rangle = \alpha\langle u, w \rangle$
+      \item $\langle u, v \rangle = \overline{ \langle u, w \rangle}$
+      \item $\langle u, u \rangle > 0$ si $ u \neq \overline 0$
+      \end{itemize}
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -1*\MiniPageH pt)$)
+    {
+    Una norma es una funcion $ N:V \rightarrow \mathbb{R}$ que verifica
+    \begin{itemize}
+      \item $N(v) \geq 0$ $\forall v \in V$
+      \item $\forall \alpha \in \mathbb{F}, v\in V \Rightarrow N(\alpha v) = |\alpha|N(v)$
+      \item $\forall v,u \in V, N(u+v) \leq N(u) + N(v)$
+    \end{itemize}
+      La norma asociada al P.I. esta dada por: $\| v \| = \langle v,v \rangle^{1/2}$ \\
+      \vspace{2mm}
+      V con P.I. un Espacio Euclideo. El ángulo entre u y v, denotado ($\widehat{u,n}$) al real $\alpha \in [0, \pi] /$ $$ cos(\alpha) = \frac{\langle u,v \rangle}{\|u\| \|v\|}$$
+      \begin{itemize}
+        \item $\|u+v\|^2 = \|u\|^2 + 2\|u\|\|v\|cos(\widehat{u,n})+\|v\|^2$
+      \end{itemize}
+    };
+
+    % Row 3
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { 
+      Sea X un conjunto cualquiera, la distancia en X es $\mu: X \times X \rightarrow \mathbb{R}$ que verifica:
+      \begin{itemize}
+        \item $\mu(x,y) \geq 0$
+        \item $\mu(x,y) = 0 \Leftrightarrow x = y$ 
+        \item $\mu(x,y) = \mu(y,x)$
+        \item $\forall x,y,z \in X \mu(x,y) \leq \mu(x,z) + \mu(z,y)$
+      \end{itemize}
+      La función $d: V \times V \rightarrow \mathbb{R}$ definida por $d=(u,v) = \|u-v\|$
+      \begin{itemize}
+        \item $d(u,v) \geq 0 \forall u,v \in V$
+        \item $d(u,v) = 0 \Leftrightarrow u = v$ 
+        \item $d(u,v) = d(v,u)$
+      \end{itemize}
+
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -2*\MiniPageH pt)$)
+    {
+      $dim_\mathbb{F}V = n$. $B = {v_1,...,v_n}$ Base de V. Defino la matriz producto interno respecto de la base B a la matriz 
+      $$([\langle \cdot , \cdot \rangle]_B)_{ij} = (\langle v_i, v_j \rangle)$$
+      Dados u,v: $$\langle u,v \rangle = [u]_B [\langle \cdot, \cdot \rangle]_B \overline{[v]_B^t}$$
+      Ortogonalidad:
+      \begin{itemize}
+        \footnotesize
+        \item u,v ortogonales si $\langle u,v \rangle = 0$
+        \item $S={v_1,...,v_n}$ ortogonal si $\forall v_i, v_j \in S \Rightarrow \langle v_i, v_j \rangle = 0$
+        \item $S={v_1,...,v_n}$ ortonormal si $\forall v_i, v_j \in S \Rightarrow \langle v_i, v_j \rangle = 1$
+        \item $\exists!$P.I. en V tal que B es ortonormal respecto del P.I 
+        \item Si S es ortogonal y $ \overline 0 \notin S$, S es l.i.
+      \end{itemize}
+    };
+
+    % Row 4
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -3*\MiniPageH pt)$)
+    {
+      Una forma bilineal es una aplicación $B: V \times V \rightarrow F$ que es lineal en ambas variables.
+      \begin{itemize}
+        \item $\mathcal{B}(\alpha u + \beta v, w) = \alpha \mathcal{B}(u,w) + \beta \mathcal{B}(v, w)$
+        \item $\mathcal{B}( u ,\alpha w + \beta v) = \alpha \mathcal{B}(u,w) + \beta \mathcal{B}(v, w)$ 
+        \item  $\mathcal{B}(x,y) = xAy^t$ es bilineal. \tiny very important ig 
+          \normalsize
+        \item La matriz $[\mathcal{B}]_B = (\mathcal{B}(v_i,v_j)) \in F^{n\times n}$
+        \item $\mathcal{B}(x,y) = [x]_B[\mathcal{B}]_B[y]^t_B$
+        \item $\mathcal{B}$ simetrica si $\mathcal{B}(x,y) = \mathcal{B}(y,x)$ y si $[\mathcal{B}]_B$ simetrica.
+        \item $\mathcal{B}$ antisim. si $\mathcal{B}(x,y) = -\mathcal{B}(y,x)$ y si $[\mathcal{B}]_B$ antisim.
+
+      \end{itemize}
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { 
+      Dado $B = {v_1,...,v_n}$ Base de V, podemos generar una base ortonormal $B' = {u_1,...,u_n}$
+      $$u_1 =  v_1$$
+      $$ u_{r+1} = v_{r+1} - \sum_{k=1}^r \frac{\langle v_{r+1}, u_k \rangle}{\|u_k\|^2} u_k$$
+      y su complemento ortogonal es $$S^\bot = {v\in V: \langle v,s \rangle = 0 \forall s \in S}$$
+      La distancia entre $v \in V$ y $S \subset V$ como $inf{\|v-s\|: s \in S}$\\
+      $p_U(v)$ es la T.L. tal que $p_U(v) = v$ si $v \in U$ y $p_U = 0$ si $v \in U^\bot$
+      el punto de U mas cercano a V es $p_U(v)$
+    };
+
+\end{tikzpicture}
+
+\end{document}
