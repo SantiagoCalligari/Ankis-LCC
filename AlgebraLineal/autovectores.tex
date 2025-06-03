@@ -1,0 +1,260 @@
+\documentclass[a4paper]{article}
+
+% PACKAGES
+\usepackage[
+    a4paper,
+    margin=5mm % Small margin around the page (adjust if needed)
+]{geometry} % Package to control page layout and margins
+\usepackage{tikz} % Powerful drawing package, used here for the grid
+\usetikzlibrary{calc} % To perform calculations within tikz
+\usepackage{lipsum} % Package to generate placeholder text (Lorem Ipsum) - Keep for example
+\usepackage{paralist}
+
+\usepackage{amsfonts} % Or \usepackage{amssymb}
+% SETTINGS
+\pagestyle{empty} % Remove page numbers
+\setlength{\parindent}{0pt} % Remove paragraph indentation
+
+\begin{document}
+
+% --- PAGE 1 ---
+\begin{tikzpicture}[remember picture, overlay]
+    % Define the usable area corners
+    \coordinate (TopLeft) at ($(current page.north west) + (5mm,-5mm)$);
+    \coordinate (BottomRight) at ($(current page.south east) + (-5mm,5mm)$);
+
+    % Calculate the dimensions of each mini-page
+    \pgfmathsetmacro{\MiniPageW}{\textwidth/2}
+    \pgfmathsetmacro{\MiniPageH}{\textheight/4}
+    \pgfmathsetmacro{\TextW}{\MiniPageW - 4mm} % Text width slightly smaller than cell
+
+    % --- Define Node Style ---
+    \tikzstyle{minipagestyle} = [
+        draw=gray, thin,
+        anchor=north west,
+        minimum width=\MiniPageW pt,
+        minimum height=\MiniPageH pt,
+        text width=\TextW pt,
+        inner sep=2mm % Padding inside the cell
+    ]
+
+    % --- Draw the 8 Mini-Pages for Page 1 ---
+
+    % Row 1
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C1 (Top-Left)
+        \vspace*{\fill} % Optional: centers text vertically
+            \Large{Matriz Diagonalizable}\\
+            \Large{Y Autovectores}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C2 (Top-Right)
+        \vspace*{\fill}
+          \Large{ Polinomio Característico }
+        \vspace*{\fill}
+    };
+
+    % Row 2
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C1
+        \vspace*{\fill}
+          \Large{Autoespacios  y\hspace{20mm}\\Diagonalización}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C2
+        \vspace*{\fill}
+          \Large{ Polinomio Minimal }
+        \vspace*{\fill}
+    };
+
+    % Row 3
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C1
+        \vspace*{\fill}
+          \Large{ Teorema de Cayley-Hamilton }
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C2
+        \vspace*{\fill}
+          \Large{ Subespacios T-Invariantes }
+        \vspace*{\fill}
+    };
+
+    % Row 4
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C1 (Bottom-Left)
+        \vspace*{\fill}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C2 (Bottom-Right)
+        \vspace*{\fill}
+          \vspace*{\fill}
+    };
+
+\end{tikzpicture}
+
+\newpage % Start the second page
+
+% --- PAGE 2 ---
+\begin{tikzpicture}[remember picture, overlay]
+    % Define the usable area corners (same as page 1)
+    \coordinate (TopLeft) at ($(current page.north west) + (5mm,-5mm)$);
+    \coordinate (BottomRight) at ($(current page.south east) + (-5mm,5mm)$);
+
+    % Calculate the dimensions of each mini-page (same as page 1)
+    \pgfmathsetmacro{\MiniPageW}{\textwidth/2}
+    \pgfmathsetmacro{\MiniPageH}{\textheight/4}
+    \pgfmathsetmacro{\TextW}{\MiniPageW - 4mm} % Text width slightly smaller than cell
+
+    % --- Use the same Node Style ---
+    \tikzstyle{minipagestyle} = [
+        draw=gray, thin,
+        anchor=north west,
+        minimum width=\MiniPageW pt,
+        minimum height=\MiniPageH pt,
+        text width=\TextW pt,
+        inner sep=2mm % Padding inside the cell
+    ]
+
+    % --- Draw the 8 Mini-Pages for Page 2 ---
+
+    % Row 1
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { 
+        $\chi_A(X) = det(XI - A) \in F[X]$ Polinomio Característico de A.
+        \begin{itemize}
+          \item $\chi_A(X)$ es mónico y $grado(\chi_A(X)) \leq n$. 
+          \item $\lambda$ Autovalor de A $\Leftrightarrow \lambda $ raiz de $\chi_A(X)$ 
+          \item $\chi_{CAC^{-1}}(X) = \chi_A(X)$
+          \item $\chi_T := \chi_{[T]_B}$ Polinomio Característico de T.
+          \item $\lambda$ autovalor de T $\Leftrightarrow \lambda$ raiz de $\chi_T(X)$
+        \end{itemize}
+        \vspace{10mm}
+      };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { 
+      \small
+      \begin{itemize}
+      \item $A$ Diagonalizable $\Leftrightarrow \exists D \in \mathbb{F}^{n\times n}$ Diagonal $/ A \sim D$ 
+      \item $T$ Diagonalizable $\Leftrightarrow \exists B$ base de V/ $[T]_B$ es Diagonal. 
+      \item T Diag. $\Leftrightarrow \exists B$ base de V formada por autovectores de T.
+      \end{itemize}
+      \vspace{5mm}
+
+      \begin{itemize}
+        \item $v \in V$ autovector de T $\Leftrightarrow \exists \lambda / T(v) = \lambda v$ y $\lambda$ autovalor de T.\\
+        \item $v$ autovector $\forall u \in span(v)\backslash{\overline 0}$ autovector de T asociado a $\lambda$\\
+        \item $v \neq \overline 0$ A.V. (Autovector) si $\exists \lambda / Av = \lambda v$
+        \item A Diagonalizable $\Leftrightarrow \exists$ base de $F^n$ formada por A.V. de A.
+    \end{itemize}
+
+    };
+
+    % Row 2
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { 
+      \small
+      \begin{itemize}
+        \item $\exists p(X) \in F[X], p\neq \overline{ 0(X)}$ tal que $p(A) = \overline 0$. P anula A.
+        \item $m_A(X)$ no nulo, mónico, grado mínimo que anula A. Polinomio minimal.
+        \item $p(A) = 0 \Leftrightarrow m_A(X)|p(X)$ 
+        \item $A\sim B \Rightarrow p(A) \sim p(B).$  $P(A) = \overline 0 \Leftrightarrow p(B) = \overline 0$
+        \item $A\sim B \Rightarrow m_A(X) = m_B(X)$ 
+        \item $m_T := m_{[T]_B}$ polinomio minimal de T. 
+        \item $\lambda$ AutoValor de A $\Leftrightarrow \lambda$ raiz de $m_A(X)$ 
+        \item $p(v) = \overline 0 \Leftrightarrow m_v(X)|p(X)$
+        \item $B=\{ v_1,...,v_n\}$ $m_A = m.c.m.\{m_{v_1},..., m_{v_n}\}$
+
+      \end{itemize}
+      
+
+     };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { 
+      \small
+      El AutoEspacio(A.E.) de $A$ asociado a $v$ es: $$ E_\lambda = {v\in F^n: (\lambda I - A) v = \overline 0}$$
+      \begin{center}
+        \begin{inparaitem}
+          \item $\overline 0 \in E_\lambda$ \hspace{5mm}
+          \item $E_\lambda \subset F^n$ \hspace{5mm} 
+          \item $E_\lambda = N(\lambda I - A )$
+        \end{inparaitem}
+      \vspace{6mm}
+      \end{center}
+      \begin{itemize}
+        \item $\lambda_1 \neq \lambda_2 A.V. \Rightarrow E_{\lambda_1} \bigcap E_{\lambda_2} = \overline 0$
+        \item $E_{\lambda_j} \bigcap \bigoplus_{k=1, k\neq j}^r E_{\lambda_k} = {\overline 0} $
+        \item $\chi_A(X) = (X-\lambda)^r P(X)$ con $P(\lambda) \neq \overline 0$. r multiplicidad.
+      \end{itemize}
+      A Diagonalizable, $\lambda_1,...,\lambda_r$ A.V. equivalente:
+      \begin{itemize}
+        \item A Diagonalizable
+        \item $\bigoplus_{i=1}^r E_{\lambda_i} = F^n$. 
+        \item $\chi_A(X) = (X-\lambda_1)^{a_1}...(X-\lambda_r)^{a_r}$ $a_i = dim(E_{\lambda_i})$
+      \end{itemize}
+    };
+
+    % Row 3
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { 
+      \small
+      $T \in L(V), U \subset V$, U subsespacio T-invariante de V si $T(U) \subset U$
+      \begin{itemize}
+        \item ker(T), Im(T) son T-invariantes.
+        \item $U\subset V$\hspace{0.25mm}es T-invariante con $dimU = 1 \Leftrightarrow$ $U = span\{v\}$ v A.V. 
+        \item U,W T-invariante. $\Rightarrow U\bigcap W$ y $U + W$ Sev T-invariantes. 
+        \item U T-invariante. Si $T|_U: U -> U$ función restricción. Entonces:
+      \end{itemize}
+          \begin{center}
+            \begin{inparaenum}
+              \item $m_{T_U}|m_T$ 
+                \hspace{10mm}
+              \item $\chi_{T_U}|\chi_T$
+                \hspace{10mm}
+            \end{inparaenum}
+          \end{center}
+      \begin{itemize}
+        \item U,W, T-invariantes, $U\oplus W = V$
+      \end{itemize}
+          \begin{center}
+            \begin{inparaenum}
+            \item $\chi_T = \chi_{T|_U}|\chi_{T|_W}$
+                \hspace{10mm}
+            \item $m_T = m.c.m.\{m_{T|_U}, m_{T|_W}\}$
+            \end{inparaenum}
+          \end{center}
+          
+
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { 
+      
+      \begin{itemize}
+        \item $A\in F^{n\times n} \Rightarrow m_A|\chi_A$, $\chi_A(A) = 0$
+        \item $grado(m_A) \leq n$ 
+        \item $grado(m_A) = n \Rightarrow m_A = \chi_A$
+        \item si $\exists v \in F / grado(m_v) = n \Rightarrow m_v = m_A = \chi_A$ 
+        \item $A^{-1} \in span\{I,A,...,A^{n-1}\}$
+        \item A Diagonalizable $\Leftrightarrow m_A $ tiene todas sus raices en F y son simples (multiplicidad 1).
+      \end{itemize}
+
+ 
+      
+      
+    };
+
+    % Row 4
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { 
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { 
+    };
+
+\end{tikzpicture}
+
+\end{document}
