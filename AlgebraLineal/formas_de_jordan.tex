@@ -1,0 +1,238 @@
+\documentclass[a4paper]{article}
+
+% PACKAGES
+\usepackage[
+    a4paper,
+    margin=5mm % Small margin around the page (adjust if needed)
+]{geometry} % Package to control page layout and margins
+\usepackage{tikz} % Powerful drawing package, used here for the grid
+\usetikzlibrary{calc} % To perform calculations within tikz
+\usepackage{lipsum} % Package to generate placeholder text (Lorem Ipsum) - Keep for example
+
+\usepackage{amsfonts} % Or \usepackage{amssymb}
+\usepackage{amsmath}
+
+% SETTINGS
+\pagestyle{empty} % Remove page numbers
+\setlength{\parindent}{0pt} % Remove paragraph indentation
+\usepackage{ amssymb }
+\begin{document}
+
+% --- PAGE 1 ---
+\begin{tikzpicture}[remember picture, overlay]
+    % Define the usable area corners
+    \coordinate (TopLeft) at ($(current page.north west) + (5mm,-5mm)$);
+    \coordinate (BottomRight) at ($(current page.south east) + (-5mm,5mm)$);
+
+    % Calculate the dimensions of each mini-page
+    \pgfmathsetmacro{\MiniPageW}{\textwidth/2}
+    \pgfmathsetmacro{\MiniPageH}{\textheight/4}
+    \pgfmathsetmacro{\TextW}{\MiniPageW - 4mm} % Text width slightly smaller than cell
+
+    % --- Define Node Style ---
+    \tikzstyle{minipagestyle} = [
+        draw=gray, thin,
+        anchor=north west,
+        minimum width=\MiniPageW pt,
+        minimum height=\MiniPageH pt,
+        text width=\TextW pt,
+        inner sep=2mm % Padding inside the cell
+    ]
+
+    % --- Draw the 8 Mini-Pages for Page 1 ---
+
+    % Row 1
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C1 (Top-Left)
+        \vspace*{\fill} % Optional: centers text vertically
+            \Large{ Nilpotencia }
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { % Content for R1, C2 (Top-Right)
+        \vspace*{\fill}
+          \Large{ Bloque de Jordan\\nilpotente}
+        \vspace*{\fill}
+    };
+
+    % Row 2
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C1
+        \vspace*{\fill}
+          \Large{ Base de Jordan}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { % Content for R2, C2
+        \vspace*{\fill}
+          \Large { Base de Jordan para A}
+        \vspace*{\fill}
+    };
+
+    % Row 3
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C1
+        \vspace*{\fill}
+          \Large{ Bloque de Jordan asociado al A.V. $\lambda$}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { % Content for R3, C2
+        \vspace*{\fill}
+          \Large{ Matriz de Jordan }
+        \vspace*{\fill}
+    };
+
+    % Row 4
+    \node[minipagestyle, text centered] at ($(TopLeft) + (0*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C1 (Bottom-Left)
+        \vspace*{\fill}
+        \vspace*{\fill}
+    };
+    \node[minipagestyle, text centered] at ($(TopLeft) + (1*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { % Content for R4, C2 (Bottom-Right)
+        \vspace*{\fill}
+          \vspace*{\fill}
+    };
+
+\end{tikzpicture}
+
+\newpage % Start the second page
+
+% --- PAGE 2 ---
+\begin{tikzpicture}[remember picture, overlay]
+    % Define the usable area corners (same as page 1)
+    \coordinate (TopLeft) at ($(current page.north west) + (5mm,-5mm)$);
+    \coordinate (BottomRight) at ($(current page.south east) + (-5mm,5mm)$);
+
+    % Calculate the dimensions of each mini-page (same as page 1)
+    \pgfmathsetmacro{\MiniPageW}{\textwidth/2}
+    \pgfmathsetmacro{\MiniPageH}{\textheight/4}
+    \pgfmathsetmacro{\TextW}{\MiniPageW - 4mm} % Text width slightly smaller than cell
+
+    % --- Use the same Node Style ---
+    \tikzstyle{minipagestyle} = [
+        draw=gray, thin,
+        anchor=north west,
+        minimum width=\MiniPageW pt,
+        minimum height=\MiniPageH pt,
+        text width=\TextW pt,
+        inner sep=2mm % Padding inside the cell
+    ]
+
+    % --- Draw the 8 Mini-Pages for Page 2 ---
+
+    % Row 1
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -0*\MiniPageH pt)$)
+    {
+      $J \in F^{n \times n} $ es un bloque de Jordan nilpotente si
+      $$J = \begin{pmatrix}
+0 & 0 & \cdots & 0 & 0 \\
+1 & 0 & \cdots & 0 & 0 \\
+0 & 1 & \cdots & 0 & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \cdots & 1 & 0
+\end{pmatrix}.$$
+    \small
+    \begin{itemize}
+      
+      \item     $ran(J) = n-1$
+
+      \item C $l.i. \subset V / ker(T^i) \bigcap \langle C\rangle = \{\overline 0 \}$ $\Rightarrow ker(T^{i-1}) \bigcap \langle T(C) \rangle = \{\overline 0\}$
+    \end{itemize}
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -0*\MiniPageH pt)$)
+    { 
+      \begin{itemize}
+        \item T nilpotente $\Leftrightarrow \exists k / T^k \equiv 0$ 
+        \item $k=min\{j\in \mathbb{N}: T^j \equiv 0 \}$
+        \item A nilpotente $\Leftrightarrow \exists k/A^k = 0_{n\times n}$ $k$, indice nilpotencia 
+        \item T es k pasos nilpotente $\Leftrightarrow m_T(X) = X^k$
+        \item $grado(m_T)\leq n = dim(V)$, T nilpotente $\Leftrightarrow T^n = 0$
+        \item $T^k \equiv 0 \Rightarrow \{\overline 0\} \varsubsetneq ker(T) \varsubsetneq ker(T^2)\varsubsetneq ... \varsubsetneq ker(T^k) = V$ 
+        \item $A^k \equiv 0 \Rightarrow \{\overline 0 \} \varsubsetneq N(A) \varsubsetneq N(A^2) \varsubsetneq ... \varsubsetneq N(A^k) = F^n$ 
+      \end{itemize}
+      
+    };
+
+    % Row 2
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { 
+      \small
+      \begin{itemize}
+        \item     $A$ nilpotente $\Rightarrow A \sim $ Forma de Jordan (F.J) Nilpotente. \\
+        \item     $B$ base de $F^n / [T]_B = J_A$ Forma de Jordan nilpotente $\Rightarrow$ \\B es una base de Jordan para A. Y $J_A$ la F.J. de A 
+        \item $ J \in F^{n \times n}$ B.J.N. $\Rightarrow ran(J^i) = n-i, i = 1,...,n$ 
+        \item A es k nilpotente $\Rightarrow$ B.J.N de mayor tamaño en A es $k \times k$
+        \item La cantidad de B.J.N. en A es $(n - ran(A)) = dim(ker(A))$
+        \item La cantidad de B.J.N. de tamaño $i \times i$ en A, $$c_i = ran(A^{i+1}) - 2ran(A^i) + ran(A^{i-1}) $$
+        \item Si $J, K$ F.J.N. si $ J \sim K \Rightarrow  J = K$  
+        \item $\exists !$ F.J.N $/ [T]_B = J $ para B base.
+        \item $J,K$ F.J.N, $A,B \in F^n$  / $A \sim J, B\sim K \Rightarrow A \sim J \Leftrightarrow J = K$  
+
+
+      \end{itemize}
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -1*\MiniPageH pt)$)
+    { 
+      $T^k \equiv 0 \Rightarrow \exists B$ base de V /
+      \vspace{-2mm}
+      $$ [T]_B = \begin{pmatrix} J_1 & 0 & ... & 0 \\  0 & J_2 & ... & 0 \\ \vdots & \vdots & \ddots  & \vdots \\ 0 & 0 & ... & J_r\end{pmatrix}$$
+      $$ i = 1 ... r, J_i \in F^{n_i \times n_i}$$
+      B es Base de Jordan, $[T]_B$ la forma de Jordan de la T.L.
+      
+      $$ A = \begin{pmatrix} J_1 & 0 & ... & 0 \\  0 & J_2 & ... & 0 \\ \vdots & \vdots & \ddots  & \vdots \\ 0 & 0 & ... & J_r\end{pmatrix}$$
+      Forma de Jordan nilpotente
+
+    };
+
+    % Row 3
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { 
+      $$ J = \begin{pmatrix}
+        J_1 & 0 & \dots & 0 \\
+        0 & J_2 & \dots  & 0\\
+        \vdots & \vdots & \ddots & \vdots  \\
+        0 & 0 & \cdots & J_n  \\
+  \end{pmatrix}$$
+  \begin{center}
+    Donde $J_i$ tiene forma:
+    $$ J_i = \begin{pmatrix} 
+      J(\lambda_i, n_1)& 0& \dots& 0\\
+      0 &J(\lambda_i, n_2)& \dots& 0\\
+        \vdots & \vdots & \ddots & \vdots  \\
+        0&  0&\dots& J(\lambda_i, n_{r_i})\\
+
+    \end{pmatrix}$$
+  \end{center}
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -2*\MiniPageH pt)$)
+    { 
+      $$ J(\lambda, n) = \begin{pmatrix} \lambda & 0 & \dots & 0 & 0 \\ 1 & \lambda & \dots & 0 & 0 \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & \cdots & \lambda & 0 \\ 0 & 0& \dots & 1 & \lambda   \end{pmatrix}$$
+      \begin{center}
+        Bloque de Jordan Asociado al Autovalor $\lambda$.\\( B.J.$\lambda$ )
+      \end{center}
+      $m_T(X) = p(X)q(X), (p(X),q(X)) = 1$ (coprimos)
+      \begin{itemize}
+        \item $ker(p(T)), ker(q(T))$ T Invariantes.
+        \item $V = ker(p(T)) \oplus ker(q(T))$
+        \item $m_{T|_{ker(p(T))}(X) = p(X)}$, $m_{T|_{ker(q(T))}(X) = q(X)}$
+      \end{itemize}
+
+
+ 
+      
+      
+    };
+
+    % Row 4
+    \node[minipagestyle] at ($(TopLeft) + (0*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { 
+    };
+    \node[minipagestyle] at ($(TopLeft) + (1*\MiniPageW pt, -3*\MiniPageH pt)$)
+    { 
+    };
+
+\end{tikzpicture}
+
+\end{document}
